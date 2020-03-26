@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:personal_finance/widgets/user_transactions.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -16,7 +15,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
   String titleInput;
   String amountInput;
 
@@ -25,21 +23,31 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter App'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: SingleChildScrollView(
-          child: Column(
+        child: Column(
 //          mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  child: Card(
-                    color: Colors.blue,
-                    child: Text('Chart'),
-                  ),
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  color: Colors.blue,
+                  child: Text('Chart'),
                 ),
-                UserTransactions(),
-              ]),
+              ),
+              UserTransactions(),
+            ]),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
       ),
     );
   }
