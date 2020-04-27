@@ -14,16 +14,16 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final amountController = TextEditingController();
 
-  void submitData(){
+  void submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
-    if(enteredTitle.isEmpty || enteredAmount <= 0){
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
 
     widget.addNewTransaction(
-        enteredTitle,
-        enteredAmount,
+      enteredTitle,
+      enteredAmount,
     );
 
     Navigator.of(context).pop();
@@ -48,11 +48,23 @@ class _NewTransactionState extends State<NewTransaction> {
               keyboardType: TextInputType.number,
               onSubmitted: (_) => submitData(),
             ),
-            FlatButton(
+            Container(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  Text('no date chosen'),
+                  FlatButton(
+                    textColor: Theme.of(context).primaryColor,
+                    child: Text('Choose date', style: TextStyle(fontWeight: FontWeight.bold), ),
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+            RaisedButton(
               child: Text("Add transaction"),
               textColor: Theme.of(context).primaryColor,
               onPressed: submitData,
-
             )
           ],
         ),
